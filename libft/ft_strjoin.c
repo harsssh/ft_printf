@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 09:33:56 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/20 14:09:30 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:21:37 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static size_t	joined_len(const char *s1, char const *s2)
 {
 	size_t	len;
 
-	len = 1;
+	len = 0;
 	if (s1 != NULL)
 		len += ft_strlen(s1);
 	if (s2 != NULL)
@@ -29,7 +29,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*buf;
 	size_t	buf_len;
 
-	buf_len = joined_len(s1, s2);
+	buf_len = joined_len(s1, s2) + 1;
 	buf = ft_calloc(buf_len, sizeof(char));
 	if (buf == NULL)
 		return (NULL);

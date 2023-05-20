@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:07:46 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/20 14:10:57 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/20 20:00:04 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static size_t	count_width(unsigned int n)
 {
 	size_t	count;
 
+	if (n == 0)
+		return (1);
 	count = 0;
 	while (n)
 	{
@@ -49,42 +51,43 @@ static size_t	count_width(unsigned int n)
 	return (count);
 }
 
-static char	*split_digit(unsigned int n)
+static void	store_digit(unsigned int n, char *buf, size_t len)
 {
-	char	*buf;
 	size_t	i;
-	size_t	buf_len;
 
 	if (n == 0)
-		return (ft_strdup("0"));
-	buf_len = count_width(n) + 1;
-	buf = ft_calloc(buf_len, sizeof(char));
-	if (buf == NULL)
-		return (NULL);
+	{
+		buf[0] = '0';
+		return ;
+	}
 	i = 0;
-	while (n)
+	while (n && i < len)
 	{
 		buf[i++] = (n % 10) + '0';
 		n /= 10;
 	}
-	return (reverse(buf, buf_len - 1));
+	reverse(buf, len - 1);
 }
 
 char	*ft_itoa(int n)
 {
-	char			*res;
-	char			*tmp;
+	char			*buf;
 	unsigned int	num;
+	size_t			buf_len;
 
 	num = ft_abs(n);
-	res = split_digit(num);
-	if (res == NULL)
+	buf_len = count_width(num) + 1;
+	if (n < 0)
+		buf_len++;
+	buf = ft_calloc(buf_len, sizeof(char));
+	if (buf == NULL)
 		return (NULL);
 	if (n < 0)
 	{
-		tmp = ft_strjoin("-", res);
-		free(res);
-		res = tmp;
+		buf[0] = '-';
+		store_digit(num, buf + 1, buf_len - 1);
 	}
-	return (res);
+	else
+		store_digit(num, buf, buf_len);
+	return (buf);
 }

@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 09:43:59 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/20 14:10:06 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/20 19:22:12 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	start;
 	size_t	end;
 
-	if (s1 == NULL)
+	if (s1 == NULL || set == NULL)
 		return (NULL);
 	start = 0;
 	while (s1[start] && contains(set, s1[start]))
