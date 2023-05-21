@@ -1,3 +1,4 @@
 libftprintf.a
+main.c
 *.o
 a.out
