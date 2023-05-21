@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 15:23:09 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/20 14:09:12 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/21 17:42:14 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	read_up_to_sign(const char **s)
 	return (1);
 }
 
-// whether sign * (num + x) overflows the range for longs
+// whether sign * (num * 10 + x) overflows the range for longs
 static int	is_overflow(int sign, unsigned long num, unsigned long x)
 {
 	unsigned long	limit;

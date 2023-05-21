@@ -3,11 +3,11 @@ SRC_NAME=ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c
 OBJ_DIR=obj
 OBJ=$(addprefix $(OBJ_DIR)/,$(SRC_NAME:.c=.o))
 CFLAGS=-Wall -Wextra -Werror
-LIB_NAME=libft.a
+NAME=libft.a
 
-all: $(LIB_NAME)
+all: $(NAME)
 
-$(LIB_NAME): $(OBJ)
+$(NAME): $(OBJ)
 	ar rcs $@ $^
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -19,7 +19,7 @@ clean:
 
 .PHONY: fclean
 fclean: clean
-	$(RM) $(LIB_NAME)
+	$(RM) $(NAME)
 
 .PHONY: re
 re: fclean all
