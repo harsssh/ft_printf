@@ -1,39 +1,42 @@
+CFLAGS=-Wall -Wextra -Werror
+INCLUDE_DIR=include
 SRC_DIR=src
 SRC_NAME=$(notdir $(wildcard $(SRC_DIR)/*.c))
 OBJ_DIR=obj
-INCLUDE_DIR=include
-CFLAGS=-Wall -Wextra -Werror
+LIB_DIR=.
 LIB_NAME=libftprintf.a
-LIBFT_NAME=libft.a
 LIBFT_DIR=libft
+LIBFT_NAME=libft.a
+MAIN_SRC=main.c
 
 OBJ=$(addprefix $(OBJ_DIR)/,$(SRC_NAME:.c=.o))
 LIBFT=$(addprefix $(LIBFT_DIR)/,$(LIBFT_NAME))
+LIB=$(addprefix $(LIB_DIR)/,$(LIB_NAME))
 
 all: $(LIB_NAME)
 
-$(LIB_NAME): $(OBJ)
-	ar rcs $@ $^
+$(LIB): $(LIBFT) $(OBJ)
+	cp $(LIBFT) $(LIB)
+	$(AR) rs $@ $(OBJ)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -o $@ -c $< -I$(INCLUDE_DIR)
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -o $@ -c $<
 
-
-main: main.c $(LIB_NAME) $(LIBFT)
-	$(CC) $(CFLAGS) -o $@ -c $< -L. -L$(LIBFT_DIR) -l$(LIBFT_NAME) -l$(LIB_NAME) -I$(INCLUDE_DIR)
+main: $(MAIN_SRC) $(LIB) $(LIBFT)
+	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -L$(LIB_DIR) -l$(LIB) -o $@ $^
 
 .PHONY: clean
 clean:
 	$(RM) $(OBJ)
-	make -C $(LIBFT_DIR)
+	make -C $(LIBFT_DIR) clean
 
 .PHONY: fclean
 fclean: clean
-	$(RM) $(LIB_NAME)
-	make -C $(LIBFT_DIR)
+	$(RM) $(LIB)
+	make -C $(LIBFT_DIR) fclean
 
 .PHONY: re
 re: fclean all
