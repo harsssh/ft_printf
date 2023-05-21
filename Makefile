@@ -12,10 +12,11 @@ MAIN_SRC=main.c
 OBJ=$(addprefix $(OBJ_DIR)/,$(SRC_NAME:.c=.o))
 LIBFT=$(addprefix $(LIBFT_DIR)/,$(LIBFT_NAME))
 LIB=$(addprefix $(LIB_DIR)/,$(LIB_NAME))
+NAME=$(LIB)
 
-all: $(LIB_NAME)
+all: $(NAME)
 
-$(LIB): $(LIBFT) $(OBJ)
+$(NAME): $(LIBFT) $(OBJ)
 	cp $(LIBFT) $(LIB)
 	$(AR) rs $@ $(OBJ)
 
