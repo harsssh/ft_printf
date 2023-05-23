@@ -1,5 +1,5 @@
 CFLAGS=-Wall -Wextra -Werror
-INCLUDE_DIR=include
+INCLUDE=-Iinclude -Ilibft
 SRC_DIR=src
 SRC_NAME=$(notdir $(wildcard $(SRC_DIR)/*.c))
 OBJ_DIR=obj
@@ -24,10 +24,10 @@ $(LIBFT):
 	make -C $(LIBFT_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -o $@ -c $<
+	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 main: $(MAIN_SRC) $(LIB) $(LIBFT)
-	$(CC) $(CFLAGS) -I$(INCLUDE_DIR) -L$(LIB_DIR) -l$(LIB) -o $@ $^
+	$(CC) $(CFLAGS) $(INCLUDE) -L$(LIB_DIR) -l$(LIB) -o $@ $^
 
 .PHONY: clean
 clean:
