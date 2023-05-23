@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 11:07:46 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/20 20:00:04 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:54:21 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,6 @@ static unsigned int	ft_abs(int n)
 	if (n < 0)
 		return (-n);
 	return (n);
-}
-
-static char	*reverse(char *s, size_t len)
-{
-	size_t	i;
-	char	tmp;
-
-	i = 0;
-	while (i < len / 2)
-	{
-		tmp = s[i];
-		s[i] = s[len - i - 1];
-		s[len - i - 1] = tmp;
-		i++;
-	}
-	return (s);
 }
 
 static size_t	count_width(unsigned int n)
@@ -53,20 +37,17 @@ static size_t	count_width(unsigned int n)
 
 static void	store_digit(unsigned int n, char *buf, size_t len)
 {
-	size_t	i;
-
 	if (n == 0)
 	{
 		buf[0] = '0';
 		return ;
 	}
-	i = 0;
-	while (n && i < len)
+	buf[len--] = '\0';
+	while (n && len--)
 	{
-		buf[i++] = (n % 10) + '0';
+		buf[len] = (n % 10) + '0';
 		n /= 10;
 	}
-	reverse(buf, len - 1);
 }
 
 char	*ft_itoa(int n)
