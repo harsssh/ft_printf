@@ -6,7 +6,7 @@
 /*   By: kemizuki <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 16:43:02 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/20 16:09:13 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:49:40 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stddef.h>
 
 int		ft_atoi(const char *str);
+long	ft_atol(const char *str);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
 int		ft_isalnum(int c);

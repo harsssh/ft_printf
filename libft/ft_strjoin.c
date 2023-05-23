@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 09:33:56 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/20 19:21:37 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/21 21:53:57 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	if (s1 != NULL)
 		ft_strlcat(buf, s1, buf_len);
-	if (s1 != NULL)
+	if (s2 != NULL)
 		ft_strlcat(buf, s2, buf_len);
 	return (buf);
 }
