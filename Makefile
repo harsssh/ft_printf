@@ -27,7 +27,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INCLUDE) -o $@ -c $<
 
 main: $(MAIN_SRC) $(LIB) $(LIBFT)
-	$(CC) $(CFLAGS) $(INCLUDE) -L$(LIB_DIR) -l$(LIB) -o $@ $^
+	$(CC) $(CFLAGS) $(INCLUDE) -L$(LIB_DIR) -lftprintf -o $@ $(MAIN_SRC)
 
 .PHONY: clean
 clean:

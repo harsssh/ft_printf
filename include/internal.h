@@ -6,14 +6,16 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:45 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/21 19:23:34 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/23 15:11:46 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERNAL_H
 # define INTERNAL_H
 
-enum					e_flag
+# include <stdbool.h>
+
+enum							e_flag
 {
 	HYPHEN,
 	ZERO,
@@ -21,10 +23,11 @@ enum					e_flag
 	SPACE,
 	HASH,
 };
-typedef enum e_flag		t_flag;
+typedef enum e_flag				t_flag;
 
-enum					e_spec
+enum							e_spec
 {
+	UNKNOWN,
 	U_CHAR,    // c
 	STRING,    // s
 	DECIMAL,   // d, i
@@ -33,17 +36,22 @@ enum					e_spec
 	POINTER,   // p
 	PERCENT,   // %
 };
-typedef enum e_spec		t_spec;
+typedef enum e_spec				t_spec;
 
 // conversion specification
-// omit length modifier
-struct					s_format
+// %[flags][width].[precision][length modifier][specifier]
+// omit precision, length modifier
+struct							s_placeholder
 {
-	t_flag				*flags;
-	unsigned int		width;
-	unsigned int		precision;
-	t_spec				specifier;
+	t_flag						*flags;
+	bool						exist_width;
+	unsigned long				width;
+	t_spec						specifier;
 };
-typedef struct s_format	t_format;
+typedef struct s_placeholder	t_placeholder;
+
+char							*parse_placeholder(t_placeholder *p,
+									const char *s);
+t_spec							to_specifier(char c);
 
 #endif
