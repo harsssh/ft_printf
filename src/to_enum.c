@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specifier.c                                        :+:      :+:    :+:   */
+/*   to_enum.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 15:02:37 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/24 11:41:19 by kemizuki         ###   ########.fr       */
+/*   Created: 2023/05/24 14:22:42 by kemizuki          #+#    #+#             */
+/*   Updated: 2023/05/24 14:23:23 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,20 @@ t_spec	to_specifier(char c)
 		return (POINTER);
 	if (c == '%')
 		return (PERCENT);
-	return (UNKNOWN);
+	return (UNKNOWN_SPEC);
+}
+
+t_flag	to_flag(char c)
+{
+	if (c == '-')
+		return (HYPHEN);
+	else if (c == '+')
+		return (PLUS);
+	else if (c == ' ')
+		return (SPACE);
+	else if (c == '#')
+		return (HASH);
+	else if (c == '0')
+		return (ZERO);
+	return (UNKNOWN_FLAG);
 }

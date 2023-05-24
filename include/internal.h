@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:45 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/24 13:40:03 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/24 14:38:34 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@
 
 enum							e_flag
 {
+	UNKNOWN_FLAG = 0,
 	HYPHEN = 1,
-	ZERO = 1 << 2,
-	PLUS = 1 << 3,
-	SPACE = 1 << 4,
-	HASH = 1 << 5,
+	ZERO = 1 << 1,
+	PLUS = 1 << 2,
+	SPACE = 1 << 3,
+	HASH = 1 << 4,
 };
 typedef enum e_flag				t_flag;
 
 enum							e_spec
 {
-	UNKNOWN,
+	UNKNOWN_SPEC,
 	CHAR,
 	STRING,
 	DECIMAL,
@@ -45,18 +46,21 @@ typedef enum e_spec				t_spec;
 
 // conversion specification
 // %[flags][width].[precision][length modifier][specifier]
-// omit precision, length modifier
+// omit length modifier
 struct							s_placeholder
 {
 	unsigned long long			flags;
 	bool						exist_width;
 	unsigned long long			width;
+	bool						exist_precision;
+	unsigned long long			precision;
 	t_spec						specifier;
 };
 typedef struct s_placeholder	t_placeholder;
 
-char	*parse_placeholder(t_placeholder *p, const char *s);
+t_flag	to_flag(char c);
 t_spec	to_specifier(char c);
+char	*parse_placeholder(t_placeholder *p, const char *s);
 size_t	ft_putnbr_base(long long nbr, char *base);
 size_t	ft_putunbr_base(unsigned long long nbr, char *base);
 size_t	ft_putchar(char c);

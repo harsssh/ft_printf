@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/20 20:42:37 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/24 13:16:22 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:01:31 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "libft.h"
 #include <stdarg.h>
 #include <stdint.h>
+#include <stdio.h>
 #include <unistd.h>
 
 static size_t	print_placeholder(const t_placeholder ph, va_list *args)
