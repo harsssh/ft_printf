@@ -6,12 +6,13 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 11:09:45 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/24 14:38:34 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/24 15:57:45 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INTERNAL_H
 # define INTERNAL_H
+
 # define DECIMAL_BASE "0123456789"
 # define HEX_BASE "0123456789abcdef"
 # define HEX_BASE_UP "0123456789ABCDEF"
