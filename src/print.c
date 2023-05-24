@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   specifier.c                                        :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/23 15:02:37 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/24 11:41:19 by kemizuki         ###   ########.fr       */
+/*   Created: 2023/05/24 13:06:14 by kemizuki          #+#    #+#             */
+/*   Updated: 2023/05/24 13:09:59 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "internal.h"
+#include "libft.h"
+#include <stddef.h>
+#include <unistd.h>
 
-t_spec	to_specifier(char c)
+size_t	ft_putchar(char c)
 {
-	if (c == 'c')
-		return (CHAR);
-	if (c == 's')
-		return (STRING);
-	if (c == 'd' || c == 'i')
-		return (DECIMAL);
-	if (c == 'u')
-		return (U_DECIMAL);
-	if (c == 'x')
-		return (HEX);
-	if (c == 'X')
-		return (HEX_UP);
-	if (c == 'p')
-		return (POINTER);
-	if (c == '%')
-		return (PERCENT);
-	return (UNKNOWN);
+	ft_putchar_fd(c, STDOUT_FILENO);
+	return (1);
+}
+
+size_t	ft_putstr(char *s)
+{
+	if (s == NULL)
+		return (0);
+	ft_putstr_fd(s, STDOUT_FILENO);
+	return (ft_strlen(s));
 }
