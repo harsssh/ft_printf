@@ -6,7 +6,7 @@
 /*   By: kemizuki <kemizuki@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 13:06:14 by kemizuki          #+#    #+#             */
-/*   Updated: 2023/05/24 13:09:59 by kemizuki         ###   ########.fr       */
+/*   Updated: 2023/05/24 13:40:37 by kemizuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_putchar(char c)
 size_t	ft_putstr(char *s)
 {
 	if (s == NULL)
-		return (0);
+		return (ft_putstr("(null)"));
 	ft_putstr_fd(s, STDOUT_FILENO);
 	return (ft_strlen(s));
 }
